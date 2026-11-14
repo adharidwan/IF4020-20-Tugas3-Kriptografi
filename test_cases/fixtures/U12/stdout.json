@@ -1,0 +1,1 @@
+{"valid":false,"status":"KEY_NOT_TRUSTED","message":"Signer is not trusted for this package.","algorithm":"ed25519","keyid":"8f98cc85740e500fbd97f8c968f15ed37c60737b03ece1529a014a1e2101bd2b","package":"app","version":"1.0.0"}

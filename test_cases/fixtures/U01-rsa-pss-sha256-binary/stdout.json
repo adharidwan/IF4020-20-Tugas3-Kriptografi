@@ -1,0 +1,1 @@
+{"valid":true,"status":"OK","message":"Signature, trust, metadata, and artifact are valid.","algorithm":"rsa-pss-sha256","keyid":"c1da94ac49922edede16b014ae7a747e230288d4b654a23a8cd1df9761568298","package":"app","version":"1.0.0"}

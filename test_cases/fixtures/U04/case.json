@@ -1,0 +1,35 @@
+{
+  "id": "U04",
+  "description": "Changed canonical version, original signature",
+  "algorithm": "ed25519",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U04/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U04/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U04/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "INVALID_SIGNATURE",
+  "expected_exit_code": 1,
+  "actual_exit_code": 1,
+  "result": {
+    "valid": false,
+    "status": "INVALID_SIGNATURE",
+    "message": "Manifest signature is invalid.",
+    "algorithm": "ed25519",
+    "keyid": "992c9f14abdadf1ec09066ccf893884b8ae5e6b7fc7ab406e821bf1b569a8600",
+    "package": "app",
+    "version": "2.0.0"
+  },
+  "passed": true
+}

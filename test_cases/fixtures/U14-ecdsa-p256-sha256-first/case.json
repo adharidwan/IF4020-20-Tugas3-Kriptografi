@@ -1,0 +1,66 @@
+{
+  "id": "U14-ecdsa-p256-sha256-first",
+  "description": "First signature of identical manifest",
+  "algorithm": "ecdsa-p256-sha256",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U14-ecdsa-p256-sha256-first/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U14-ecdsa-p256-sha256-first/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U14-ecdsa-p256-sha256-first/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "OK",
+  "expected_exit_code": 0,
+  "actual_exit_code": 0,
+  "result": {
+    "valid": true,
+    "status": "OK",
+    "message": "Signature, trust, metadata, and artifact are valid.",
+    "algorithm": "ecdsa-p256-sha256",
+    "keyid": "f591e790c478a9af07950442af8e4a6dcf80bad708166beeda57267647213bd9",
+    "package": "app",
+    "version": "1.0.0"
+  },
+  "passed": true,
+  "repeat": {
+    "command": [
+      "python",
+      "-m",
+      "anticnspy",
+      "verify",
+      "--file",
+      "test_cases/fixtures/U14-ecdsa-p256-sha256-first/app.bin",
+      "--bundle",
+      "test_cases/fixtures/U14-ecdsa-p256-sha256-first/second.json",
+      "--trust-store",
+      "test_cases/fixtures/U14-ecdsa-p256-sha256-first/trust.json",
+      "--package",
+      "app",
+      "--version",
+      "1.0.0",
+      "--json"
+    ],
+    "result": {
+      "valid": true,
+      "status": "OK",
+      "message": "Signature, trust, metadata, and artifact are valid.",
+      "algorithm": "ecdsa-p256-sha256",
+      "keyid": "f591e790c478a9af07950442af8e4a6dcf80bad708166beeda57267647213bd9",
+      "package": "app",
+      "version": "1.0.0"
+    },
+    "exit_code": 0,
+    "signature_identical": false,
+    "manifest_identical": true
+  }
+}

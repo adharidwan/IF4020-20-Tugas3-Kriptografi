@@ -1,0 +1,66 @@
+{
+  "id": "U14-ed25519-first",
+  "description": "First signature of identical manifest",
+  "algorithm": "ed25519",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U14-ed25519-first/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U14-ed25519-first/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U14-ed25519-first/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "OK",
+  "expected_exit_code": 0,
+  "actual_exit_code": 0,
+  "result": {
+    "valid": true,
+    "status": "OK",
+    "message": "Signature, trust, metadata, and artifact are valid.",
+    "algorithm": "ed25519",
+    "keyid": "992c9f14abdadf1ec09066ccf893884b8ae5e6b7fc7ab406e821bf1b569a8600",
+    "package": "app",
+    "version": "1.0.0"
+  },
+  "passed": true,
+  "repeat": {
+    "command": [
+      "python",
+      "-m",
+      "anticnspy",
+      "verify",
+      "--file",
+      "test_cases/fixtures/U14-ed25519-first/app.bin",
+      "--bundle",
+      "test_cases/fixtures/U14-ed25519-first/second.json",
+      "--trust-store",
+      "test_cases/fixtures/U14-ed25519-first/trust.json",
+      "--package",
+      "app",
+      "--version",
+      "1.0.0",
+      "--json"
+    ],
+    "result": {
+      "valid": true,
+      "status": "OK",
+      "message": "Signature, trust, metadata, and artifact are valid.",
+      "algorithm": "ed25519",
+      "keyid": "992c9f14abdadf1ec09066ccf893884b8ae5e6b7fc7ab406e821bf1b569a8600",
+      "package": "app",
+      "version": "1.0.0"
+    },
+    "exit_code": 0,
+    "signature_identical": true,
+    "manifest_identical": true
+  }
+}

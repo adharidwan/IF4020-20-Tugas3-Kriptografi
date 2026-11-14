@@ -1,0 +1,35 @@
+{
+  "id": "U10-base64",
+  "description": "Malformed base64",
+  "algorithm": "ed25519",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U10-base64/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U10-base64/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U10-base64/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "FORMAT_ERROR",
+  "expected_exit_code": 1,
+  "actual_exit_code": 1,
+  "result": {
+    "valid": false,
+    "status": "FORMAT_ERROR",
+    "message": "Invalid Base64 in signature_b64.",
+    "algorithm": null,
+    "keyid": null,
+    "package": null,
+    "version": null
+  },
+  "passed": true
+}

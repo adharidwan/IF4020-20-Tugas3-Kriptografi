@@ -1,0 +1,35 @@
+{
+  "id": "U01-rsa-pss-sha256-text",
+  "description": "Correct text artifact",
+  "algorithm": "rsa-pss-sha256",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U01-rsa-pss-sha256-text/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U01-rsa-pss-sha256-text/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U01-rsa-pss-sha256-text/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "OK",
+  "expected_exit_code": 0,
+  "actual_exit_code": 0,
+  "result": {
+    "valid": true,
+    "status": "OK",
+    "message": "Signature, trust, metadata, and artifact are valid.",
+    "algorithm": "rsa-pss-sha256",
+    "keyid": "c1da94ac49922edede16b014ae7a747e230288d4b654a23a8cd1df9761568298",
+    "package": "app",
+    "version": "1.0.0"
+  },
+  "passed": true
+}

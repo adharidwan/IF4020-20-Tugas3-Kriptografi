@@ -1,0 +1,1 @@
+{"schema":"minisign-manifest/v1","package":"app","version":"1.0.0","algorithm":"rsa-pss-sha256","keyid":"c1da94ac49922edede16b014ae7a747e230288d4b654a23a8cd1df9761568298","artifact":{"name":"app.bin","size":6,"sha256":"de33ba99666d0edea7bbebc3ea6c15a2e08f42d307a70372cb7fa7112737ce31"}}

@@ -1,0 +1,35 @@
+{
+  "id": "U11",
+  "description": "Unsupported algorithm string",
+  "algorithm": "ed25519",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U11/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U11/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U11/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "UNSUPPORTED_ALGORITHM",
+  "expected_exit_code": 1,
+  "actual_exit_code": 1,
+  "result": {
+    "valid": false,
+    "status": "UNSUPPORTED_ALGORITHM",
+    "message": "Unsupported manifest algorithm.",
+    "algorithm": "unknown-profile",
+    "keyid": "992c9f14abdadf1ec09066ccf893884b8ae5e6b7fc7ab406e821bf1b569a8600",
+    "package": "app",
+    "version": "1.0.0"
+  },
+  "passed": true
+}

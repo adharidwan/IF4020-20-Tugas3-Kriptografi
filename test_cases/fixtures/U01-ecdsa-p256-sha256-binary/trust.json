@@ -1,0 +1,13 @@
+{
+  "schema": "minisign-trust/v1",
+  "keys": [
+    {
+      "keyid": "f591e790c478a9af07950442af8e4a6dcf80bad708166beeda57267647213bd9",
+      "algorithm": "ecdsa-p256-sha256",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAET78ywSJkQWxPKlIAO7lQmY1kf1dv\n8ePcr7YANvXiIvBDi40heh+8nzqSSy7QJMpwFsprznxNto4MKin4EGDp/Q==\n-----END PUBLIC KEY-----\n",
+      "packages": [
+        "app"
+      ]
+    }
+  ]
+}

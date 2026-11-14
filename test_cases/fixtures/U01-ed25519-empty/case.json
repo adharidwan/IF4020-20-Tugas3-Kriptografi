@@ -1,0 +1,35 @@
+{
+  "id": "U01-ed25519-empty",
+  "description": "Correct empty artifact",
+  "algorithm": "ed25519",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U01-ed25519-empty/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U01-ed25519-empty/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U01-ed25519-empty/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "OK",
+  "expected_exit_code": 0,
+  "actual_exit_code": 0,
+  "result": {
+    "valid": true,
+    "status": "OK",
+    "message": "Signature, trust, metadata, and artifact are valid.",
+    "algorithm": "ed25519",
+    "keyid": "992c9f14abdadf1ec09066ccf893884b8ae5e6b7fc7ab406e821bf1b569a8600",
+    "package": "app",
+    "version": "1.0.0"
+  },
+  "passed": true
+}

@@ -1,0 +1,35 @@
+{
+  "id": "U12",
+  "description": "Different untrusted key of same profile",
+  "algorithm": "ed25519",
+  "command": [
+    "python",
+    "-m",
+    "anticnspy",
+    "verify",
+    "--file",
+    "test_cases/fixtures/U12/app.bin",
+    "--bundle",
+    "test_cases/fixtures/U12/release.json",
+    "--trust-store",
+    "test_cases/fixtures/U12/trust.json",
+    "--package",
+    "app",
+    "--version",
+    "1.0.0",
+    "--json"
+  ],
+  "expected_status": "KEY_NOT_TRUSTED",
+  "expected_exit_code": 1,
+  "actual_exit_code": 1,
+  "result": {
+    "valid": false,
+    "status": "KEY_NOT_TRUSTED",
+    "message": "Signer is not trusted for this package.",
+    "algorithm": "ed25519",
+    "keyid": "8f98cc85740e500fbd97f8c968f15ed37c60737b03ece1529a014a1e2101bd2b",
+    "package": "app",
+    "version": "1.0.0"
+  },
+  "passed": true
+}
