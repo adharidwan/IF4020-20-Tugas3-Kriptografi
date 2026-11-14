@@ -19,6 +19,9 @@ def main():
         )
     )
     parser.add_argument("--image", required=True)
+    parser.add_argument(
+        "--package", default="anticnspy-demo", help="Release package (default: anticnspy-demo)"
+    )
     parser.add_argument("--keys-dir", type=Path, required=True)
     parser.add_argument("--trust-dir", type=Path, default=Path("ci/trust"))
     parser.add_argument("--out", type=Path, default=Path("test_cases/ci"))
@@ -86,7 +89,7 @@ def main():
                 "--file",
                 "/input/app.bin",
                 "--package",
-                "anticnspy-demo",
+                args.package,
                 "--version",
                 "1.0.0",
                 "--key",
@@ -124,7 +127,7 @@ def main():
                 "--trust-store",
                 "/trust.json",
                 "--package",
-                "anticnspy-demo",
+                args.package,
                 "--version",
                 "1.0.0",
                 "--json",
@@ -149,6 +152,7 @@ def main():
         record = {
             "id": identifier,
             "algorithm": algorithm,
+            "package": args.package,
             "expected_status": expected,
             "actual_status": result["status"],
             "expected_exit_code": expected_code,
@@ -231,6 +235,7 @@ def main():
     )
     summary = {
         "image": args.image,
+        "package": args.package,
         "local_image_id": image_metadata["Id"],
         "image_platform": image_metadata["Os"] + "/" + image_metadata["Architecture"],
         "repo_digests": image_metadata.get("RepoDigests", []),

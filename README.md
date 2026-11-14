@@ -236,7 +236,9 @@ python ci/container_cases.py --image anticnspy:local --allow-local-image \
 
 This is marked `registry_pull=false` and does not establish registry distribution.
 Regular CI also runs local-image regressions with public test-only keys, separate
-from CI publisher secrets. Workflow actions are pinned to verified commit IDs.
+from CI publisher secrets. It passes `--package app` to match those fixtures'
+permissions; the registry consumer uses the default `anticnspy-demo` package.
+Workflow actions are pinned to verified commit IDs.
 
 ## Design and report
 

@@ -51,6 +51,7 @@ jobs:
       - name: Local-image regression tests (not registry release evidence)
         run: >-
           python ci/container_cases.py --image anticnspy:ci --allow-local-image
+          --package app
           --keys-dir "$RUNNER_TEMP/anticnspy-keys"
           --trust-dir "$RUNNER_TEMP/anticnspy-trust" --out ci-local-results
       - name: Remove temporary private test keys
