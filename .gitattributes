@@ -1,0 +1,4 @@
+* text=auto eol=lf
+test_cases/** -text
+*.pdf -text
+*.whl -text
