@@ -126,10 +126,25 @@ def test_U10_malformed_documents(release, case):
     assert check(item).status == Status.FORMAT_ERROR
 
 
-def test_U11_unknown_algorithm_before_signature(release):
+@pytest.mark.parametrize("algorithm", ["unknown-profile", r"unknown\u0001", ""])
+def test_U11_unknown_algorithm_before_signature(release, algorithm):
     item = release()
-    mutate_manifest(item, lambda m: m.update(algorithm="unknown-profile"))
+    mutate_manifest(item, lambda m: m.update(algorithm=algorithm))
     assert check(item).status == Status.UNSUPPORTED_ALGORITHM
+
+
+@pytest.mark.parametrize("codepoint", [0, 1, 31, 127])
+def test_algorithm_control_character_is_format_error(release, codepoint):
+    item = release()
+    manifest = json.loads(base64.b64decode(item["document"]["manifest_b64"]))
+    manifest["algorithm"] = "unknown" + chr(codepoint)
+    message = json.dumps(manifest, separators=(",", ":")).encode()
+    item["document"]["manifest_b64"] = encode_b64(message)
+    save_bundle(item)
+    checked = check(item)
+    assert checked.status == Status.FORMAT_ERROR
+    assert checked.exit_code == 1
+    assert not checked.valid
 
 
 def test_U12_other_key_same_profile(release):

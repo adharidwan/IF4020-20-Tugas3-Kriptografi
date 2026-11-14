@@ -114,7 +114,7 @@ profile, or store:
 | All checks pass | `OK` | 0 |
 
 Malformed Base64 is a format error. Decoded signature length/encoding/range
-errors are signature failures. Unknown string-valued manifest algorithms
+errors are signature failures. Unknown printable ASCII manifest algorithm names
 reach stage 3. Every trust-store key is validated before lookup.
 
 `verify --json` writes exactly one object plus one newline to stdout:

@@ -14,7 +14,7 @@ Use this exact field order and ordinary decimal integer representation:
 | `schema` | Exactly `minisign-manifest/v1` |
 | `package` | ASCII `[a-z0-9][a-z0-9._-]{0,63}` |
 | `version` | ASCII `[A-Za-z0-9][A-Za-z0-9._+\-]{0,63}`; SemVer optional |
-| `algorithm` | Required profile; unknown string rejected at verification stage 3 |
+| `algorithm` | Printable ASCII; unknown profile rejected at verification stage 3 |
 | `keyid` | Lowercase 64-character SHA-256 hex of DER SPKI |
 | `artifact` | Exactly `name`, `size`, `sha256`, in that order |
 | `artifact.name` | Basename; ASCII `[A-Za-z0-9][A-Za-z0-9._-]{0,127}` |
@@ -22,6 +22,7 @@ Use this exact field order and ordinary decimal integer representation:
 | `artifact.sha256` | Lowercase 64-character SHA-256 hex of unchanged artifact bytes |
 
 All fields are mandatory; reject extra/duplicate names, nulls and wrong types.
+Control characters in algorithm names are format errors.
 Canonical bytes use ASCII strings written literally, not Unicode escapes.
 Strictly parse, rebuild the specified representation, and compare byte-for-byte.
 Verify the original bytes. This is assignment-specific serialization, not

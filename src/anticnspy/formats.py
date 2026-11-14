@@ -15,6 +15,7 @@ MAX_ARTIFACT_SIZE = 2**53 - 1
 PACKAGE_PATTERN = re.compile(r"[a-z0-9][a-z0-9._-]{0,63}", re.ASCII)
 VERSION_PATTERN = re.compile(r"[A-Za-z0-9][A-Za-z0-9._+\-]{0,63}", re.ASCII)
 NAME_PATTERN = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", re.ASCII)
+ALGORITHM_PATTERN = re.compile(r"[\x20-\x7e]*", re.ASCII)
 HEX_PATTERN = re.compile(r"[0-9a-f]{64}", re.ASCII)
 MANIFEST_FIELDS = ("schema", "package", "version", "algorithm", "keyid", "artifact")
 ARTIFACT_FIELDS = ("name", "size", "sha256")
@@ -69,7 +70,7 @@ def validate_manifest(manifest) -> dict:
     if manifest["schema"] != MANIFEST_SCHEMA:
         raise FormatError("Unknown manifest schema.")
     validate_metadata(manifest["package"], manifest["version"])
-    text(manifest["algorithm"], "algorithm")
+    text(manifest["algorithm"], "algorithm", ALGORITHM_PATTERN)
     text(manifest["keyid"], "keyid", HEX_PATTERN)
     artifact = manifest["artifact"]
     exact_fields(artifact, ARTIFACT_FIELDS, "artifact")

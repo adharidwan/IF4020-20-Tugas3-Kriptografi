@@ -64,6 +64,17 @@ def test_manifest_field_contract(release, field, value):
         serialize_manifest(manifest)
 
 
+@pytest.mark.parametrize("codepoint", [0, 1, 9, 10, 31, 127])
+def test_manifest_algorithm_control_characters_rejected(release, codepoint):
+    manifest = copy.deepcopy(release()["manifest"])
+    manifest["algorithm"] = "unknown" + chr(codepoint)
+    raw = json.dumps(manifest, separators=(",", ":")).encode()
+    with pytest.raises(FormatError):
+        parse_manifest(raw)
+    with pytest.raises(FormatError):
+        serialize_manifest(manifest)
+
+
 @pytest.mark.parametrize(
     "kind",
     ["extra", "missing", "nested_extra", "unicode_escape", "field_order", "integer_exponent"],
