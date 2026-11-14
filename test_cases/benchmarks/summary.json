@@ -1,0 +1,497 @@
+{
+  "environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "machine": "AMD64",
+    "cpu": "AMD64 Family 25 Model 116 Stepping 1, AuthenticAMD",
+    "logical_cpus": 12,
+    "python": "3.13.3 (main, May 30 2025, 05:37:00) [MSC v.1943 64 bit (AMD64)]",
+    "anticnspy": "1.0.0",
+    "cryptography": "50.0.2",
+    "openssl_backend": "OpenSSL 4.0.3 29 Sep 2026",
+    "clock": "time.perf_counter_ns (monotonic)",
+    "percentile": "nearest-rank: sorted_samples[ceil(0.95*n)-1]",
+    "iterations": 30,
+    "warmups": 5,
+    "artifact_generation": "repeat bytes 0..255 and truncate to requested length",
+    "crypto_timing": "Profile operations on original manifest bytes; internal hash included; artifact I/O/hash excluded",
+    "cli_timing": "Full new Python process including startup, I/O, hashing, validation and output"
+  },
+  "timings": [
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": null,
+      "metric": "keygen",
+      "samples": 5,
+      "median_ns": 130713600,
+      "p95_ns": 456056000
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1024,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 1050.0,
+      "p95_ns": 1300
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1024,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 593850.0,
+      "p95_ns": 731800
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1024,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 38800.0,
+      "p95_ns": 59700
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1024,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 271973950.0,
+      "p95_ns": 338275500
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1024,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 160599200.0,
+      "p95_ns": 246723300
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 476800.0,
+      "p95_ns": 678800
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 610900.0,
+      "p95_ns": 1076800
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 57350.0,
+      "p95_ns": 65900
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 251509000.0,
+      "p95_ns": 366798400
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 155955550.0,
+      "p95_ns": 216523000
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 7426100.0,
+      "p95_ns": 9642600
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 595550.0,
+      "p95_ns": 1047900
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 40400.0,
+      "p95_ns": 76600
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 265579200.0,
+      "p95_ns": 301013700
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 163164550.0,
+      "p95_ns": 200684300
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": null,
+      "metric": "keygen",
+      "samples": 5,
+      "median_ns": 20400,
+      "p95_ns": 36375700
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1024,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 1050.0,
+      "p95_ns": 1400
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1024,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 20050.0,
+      "p95_ns": 20700
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1024,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 50450.0,
+      "p95_ns": 66000
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1024,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 174558250.0,
+      "p95_ns": 196383700
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1024,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 233736400.0,
+      "p95_ns": 387694200
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 650100.0,
+      "p95_ns": 730900
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 38250.0,
+      "p95_ns": 80500
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 95700.0,
+      "p95_ns": 104800
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 194561950.0,
+      "p95_ns": 315175100
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1048576,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 236868650.0,
+      "p95_ns": 292325700
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 11448550.0,
+      "p95_ns": 13470800
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 29650.0,
+      "p95_ns": 62800
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 84800.0,
+      "p95_ns": 270500
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 276341900.0,
+      "p95_ns": 343313400
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 16777216,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 247936300.0,
+      "p95_ns": 319596200
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": null,
+      "metric": "keygen",
+      "samples": 5,
+      "median_ns": 68600,
+      "p95_ns": 1458700
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1024,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 1500.0,
+      "p95_ns": 3100
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1024,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 45900.0,
+      "p95_ns": 210000
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1024,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 117400.0,
+      "p95_ns": 203100
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1024,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 241233850.0,
+      "p95_ns": 313360500
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1024,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 186451450.0,
+      "p95_ns": 251147300
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1048576,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 660950.0,
+      "p95_ns": 729900
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1048576,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 61100.0,
+      "p95_ns": 67800
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1048576,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 156600.0,
+      "p95_ns": 171400
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1048576,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 191308100.0,
+      "p95_ns": 284747200
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1048576,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 147888650.0,
+      "p95_ns": 264946500
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 16777216,
+      "metric": "artifact_sha256_memory",
+      "samples": 30,
+      "median_ns": 11471850.0,
+      "p95_ns": 12600300
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 16777216,
+      "metric": "crypto_sign",
+      "samples": 30,
+      "median_ns": 49700.0,
+      "p95_ns": 105900
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 16777216,
+      "metric": "crypto_verify",
+      "samples": 30,
+      "median_ns": 113400.0,
+      "p95_ns": 253200
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 16777216,
+      "metric": "cli_sign",
+      "samples": 30,
+      "median_ns": 199792350.0,
+      "p95_ns": 320969200
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 16777216,
+      "metric": "cli_verify",
+      "samples": 30,
+      "median_ns": 196041250.0,
+      "p95_ns": 338216200
+    }
+  ],
+  "sizes": [
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1024,
+      "artifact_sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+      "public_key_der_bytes": 422,
+      "private_key_der_bytes": 1793,
+      "signature_bytes": 384,
+      "manifest_bytes": 299,
+      "bundle_bytes": 994
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 1048576,
+      "artifact_sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+      "public_key_der_bytes": 422,
+      "private_key_der_bytes": 1793,
+      "signature_bytes": 384,
+      "manifest_bytes": 305,
+      "bundle_bytes": 1002
+    },
+    {
+      "algorithm": "rsa-pss-sha256",
+      "artifact_bytes": 16777216,
+      "artifact_sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "public_key_der_bytes": 422,
+      "private_key_der_bytes": 1793,
+      "signature_bytes": 384,
+      "manifest_bytes": 307,
+      "bundle_bytes": 1006
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1024,
+      "artifact_sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+      "public_key_der_bytes": 91,
+      "private_key_der_bytes": 138,
+      "signature_bytes": 64,
+      "manifest_bytes": 302,
+      "bundle_bytes": 574
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 1048576,
+      "artifact_sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+      "public_key_der_bytes": 91,
+      "private_key_der_bytes": 138,
+      "signature_bytes": 64,
+      "manifest_bytes": 308,
+      "bundle_bytes": 582
+    },
+    {
+      "algorithm": "ecdsa-p256-sha256",
+      "artifact_bytes": 16777216,
+      "artifact_sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "public_key_der_bytes": 91,
+      "private_key_der_bytes": 138,
+      "signature_bytes": 64,
+      "manifest_bytes": 310,
+      "bundle_bytes": 586
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1024,
+      "artifact_sha256": "785b0751fc2c53dc14a4ce3d800e69ef9ce1009eb327ccf458afe09c242c26c9",
+      "public_key_der_bytes": 44,
+      "private_key_der_bytes": 48,
+      "signature_bytes": 64,
+      "manifest_bytes": 292,
+      "bundle_bytes": 562
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 1048576,
+      "artifact_sha256": "fbbab289f7f94b25736c58be46a994c441fd02552cc6022352e3d86d2fab7c83",
+      "public_key_der_bytes": 44,
+      "private_key_der_bytes": 48,
+      "signature_bytes": 64,
+      "manifest_bytes": 298,
+      "bundle_bytes": 570
+    },
+    {
+      "algorithm": "ed25519",
+      "artifact_bytes": 16777216,
+      "artifact_sha256": "341aacac661ccb210720bedaa9ead5d668fe5ea41a73532fc147c71e34040df1",
+      "public_key_der_bytes": 44,
+      "private_key_der_bytes": 48,
+      "signature_bytes": 64,
+      "manifest_bytes": 300,
+      "bundle_bytes": 570
+    }
+  ]
+}
