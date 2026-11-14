@@ -1,0 +1,10 @@
+{
+  "program": "AntiCNSpy",
+  "version": "1.0.0",
+  "planned_source_tag": "v1.0.0",
+  "image_repository": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi",
+  "image_version_tag": "1.0.0",
+  "published_digest": null,
+  "registry_consumer_run_url": null,
+  "status": "local implementation verified; public release pending"
+}
