@@ -1,0 +1,13 @@
+{
+  "schema": "minisign-trust/v1",
+  "keys": [
+    {
+      "keyid": "7c62b9904589ca7fa22d32504601ee3fef4e49550ea02cd77ec64c2c10db2449",
+      "algorithm": "ed25519",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEARg0EDa2ZdEQ99fXEbWcfOk935MtzYu27Rdo5tvYvNtE=\n-----END PUBLIC KEY-----\n",
+      "packages": [
+        "anticnspy-demo"
+      ]
+    }
+  ]
+}

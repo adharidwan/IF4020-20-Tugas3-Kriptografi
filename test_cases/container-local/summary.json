@@ -1,0 +1,79 @@
+{
+  "image": "anticnspy:local",
+  "local_image_id": "sha256:1abb42fe34fbad2cc3e3f6315f8ddbee57d709d917f3642584aa5c27d3e8116d",
+  "image_platform": "linux/amd64",
+  "repo_digests": [],
+  "registry_pull": false,
+  "workflow_run": null,
+  "cases": [
+    {
+      "id": "C01",
+      "algorithm": "rsa-pss-sha256",
+      "expected_status": "OK",
+      "actual_status": "OK",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "deployment_marker_exists": true,
+      "passed": true
+    },
+    {
+      "id": "C01",
+      "algorithm": "ecdsa-p256-sha256",
+      "expected_status": "OK",
+      "actual_status": "OK",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "deployment_marker_exists": true,
+      "passed": true
+    },
+    {
+      "id": "C01",
+      "algorithm": "ed25519",
+      "expected_status": "OK",
+      "actual_status": "OK",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "deployment_marker_exists": true,
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "algorithm": "ed25519",
+      "expected_status": "ARTIFACT_MISMATCH",
+      "actual_status": "ARTIFACT_MISMATCH",
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "deployment_marker_exists": false,
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "algorithm": "ed25519",
+      "expected_status": "KEY_NOT_TRUSTED",
+      "actual_status": "KEY_NOT_TRUSTED",
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "deployment_marker_exists": false,
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "algorithm": "ed25519",
+      "expected_status": "INPUT_ERROR",
+      "actual_status": "INPUT_ERROR",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "deployment_marker_exists": false,
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "network": "none",
+      "tty": false,
+      "caller_identity": "65532:65532",
+      "persistent_outputs": true,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

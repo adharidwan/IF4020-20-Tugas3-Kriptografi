@@ -1,0 +1,13 @@
+{
+  "schema": "minisign-trust/v1",
+  "keys": [
+    {
+      "keyid": "2036e61f0e2ff9e3a4a5a3afc984de6f4db1092daae716a60495e8d7b73e65d7",
+      "algorithm": "rsa-pss-sha256",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEA2XTBL7+LDkyBvGLCI/lq\nmTE3lPyPC1SYhfrayH2Sw3z8x8SDEcIsmEpK1xxaHXwNGJouGfQVA/QwTwvN+omf\nxDUPCKwvuWGk9bjeoBKI2dFwClTMMUHhJeSL3DcSkrPg9b33ImnFstHoPyDtQ1Rv\nyP1jBsO46kk2qCegjjoUoANfkHuGHuj6KestQWK+UKwIvMmUQCrehvOEpj+fPaKM\n0LnL01jldI62GRPFFz26+9epc/eVBnsoVqwcimEkbXe+jXPazDZSX4fOIiJfB09X\niS0UobVe2F0L4luRpCihg33iDBcDD+wAbTf9RUs5YVIpG6vnO03TrsuoV2EWGOn6\nX/kAGaRpLDkXPIuwKOXj1dHYwYXrMf0TbgPOM7ZPYJxCNiHsjfOG/eSSArJ6FefA\nhWQxZ5j3bY0jw7yXhqL3cfAkcqIJeNc97EyoJoSpvCUxvukCegp3+nIIY1u76yGT\n3zBty+Q0/K+Z4urVvx8WGEbA5bNorLizvLRz5Fc3nVspAgMBAAE=\n-----END PUBLIC KEY-----\n",
+      "packages": [
+        "anticnspy-demo"
+      ]
+    }
+  ]
+}

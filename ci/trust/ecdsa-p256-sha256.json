@@ -1,0 +1,13 @@
+{
+  "schema": "minisign-trust/v1",
+  "keys": [
+    {
+      "keyid": "d8e3e6ebe0eda8b2cc6c86cafd2deb758f985c514b7ccb9670fb914ee434e03a",
+      "algorithm": "ecdsa-p256-sha256",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAECViH4L2C8Axx9e98Xt686yTb4VtL\nAAhGbfi5S037b2wgNscQ/YBS2d1veqZy4k8y+tvSudxM3dc6uoR3ngXzew==\n-----END PUBLIC KEY-----\n",
+      "packages": [
+        "anticnspy-demo"
+      ]
+    }
+  ]
+}

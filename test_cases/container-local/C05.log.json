@@ -1,0 +1,65 @@
+[
+  {
+    "arguments": [
+      "--help"
+    ],
+    "exit_code": 0,
+    "stdout": "usage: anticnspy [-h] [--version] {keygen,sign,verify,trust} ...\n\nAntiCNSpy software release signatures\n\npositional arguments:\n  {keygen,sign,verify,trust}\n    keygen              Generate an exact-profile key pair\n    sign                Sign a canonical release manifest\n    verify              Verify a release using explicit trust\n    trust               Manage package-scoped public-key trust\n\noptions:\n  -h, --help            show this help message and exit\n  --version             show program's version number and exit\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "AntiCNSpy 1.0.0\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "keygen",
+      "--algorithm",
+      "ed25519",
+      "--out",
+      "/scratch/key"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"algorithm\": \"ed25519\", \"keyid\": \"22b2806e105954b644f291da9061591f8cf624af945fe5382e6866059cc59d29\", \"private_key\": \"/scratch/key.key.pem\", \"public_key\": \"/scratch/key.pub.pem\"}\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "trust",
+      "add",
+      "--key",
+      "/scratch/key.pub.pem",
+      "--package",
+      "scratch",
+      "--store",
+      "/scratch/trust.json"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"keyid\": \"22b2806e105954b644f291da9061591f8cf624af945fe5382e6866059cc59d29\", \"algorithm\": \"ed25519\", \"packages\": [\"scratch\"]}\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "trust",
+      "list",
+      "--store",
+      "/scratch/trust.json"
+    ],
+    "exit_code": 0,
+    "stdout": "[\n  {\n    \"keyid\": \"22b2806e105954b644f291da9061591f8cf624af945fe5382e6866059cc59d29\",\n    \"algorithm\": \"ed25519\",\n    \"packages\": [\n      \"scratch\"\n    ]\n  }\n]\n",
+    "stderr": ""
+  },
+  {
+    "arguments": [
+      "trust",
+      "remove"
+    ],
+    "exit_code": 0,
+    "stdout": "Removed 22b2806e105954b644f291da9061591f8cf624af945fe5382e6866059cc59d29.\n",
+    "stderr": ""
+  }
+]

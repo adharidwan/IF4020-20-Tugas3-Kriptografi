@@ -1,0 +1,63 @@
+name: Tests
+"on":
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ["3.11", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install --require-hashes -r requirements-dev.txt
+      - run: python -m pip install --no-deps .
+      - run: ruff check src tests scripts benchmarks ci
+      - run: ruff format --check src tests scripts benchmarks ci
+      - run: python -m pytest --junitxml=test-results.xml
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: tests-${{ matrix.os }}-${{ matrix.python }}
+          path: test-results.xml
+          if-no-files-found: error
+  container:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Build Linux container
+        run: docker build --platform linux/amd64 -t anticnspy:ci .
+      - name: Prepare private test directory outside evidence
+        run: |
+          mkdir -m 700 "$RUNNER_TEMP/anticnspy-keys"
+          cp test_cases/keys/*.key.pem "$RUNNER_TEMP/anticnspy-keys/"
+          chmod 600 "$RUNNER_TEMP/anticnspy-keys/"*.key.pem
+          mkdir -p "$RUNNER_TEMP/anticnspy-trust"
+          for algorithm in rsa-pss-sha256 ecdsa-p256-sha256 ed25519; do
+            cp "test_cases/fixtures/U01-$algorithm-binary/trust.json" "$RUNNER_TEMP/anticnspy-trust/$algorithm.json"
+          done
+      - name: Local-image regression tests (not registry release evidence)
+        run: >-
+          python ci/container_cases.py --image anticnspy:ci --allow-local-image
+          --keys-dir "$RUNNER_TEMP/anticnspy-keys"
+          --trust-dir "$RUNNER_TEMP/anticnspy-trust" --out ci-local-results
+      - name: Remove temporary private test keys
+        if: always()
+        run: rm -f "$RUNNER_TEMP/anticnspy-keys/"*.key.pem
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: container-regression
+          path: ci-local-results

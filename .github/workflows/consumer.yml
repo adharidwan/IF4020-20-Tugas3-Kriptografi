@@ -1,0 +1,54 @@
+name: Registry consumer C01-C05
+"on":
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "Public image reference pinned as ghcr.io/owner/image@sha256:..."
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  consumer:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Materialize pre-provisioned CI keys with restricted permissions
+        env:
+          RSA_KEY: ${{ secrets.DEMO_RSA_PRIVATE_KEY }}
+          ECDSA_KEY: ${{ secrets.DEMO_ECDSA_PRIVATE_KEY }}
+          ED25519_KEY: ${{ secrets.DEMO_ED25519_PRIVATE_KEY }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP']) / 'anticnspy-secrets'
+          root.mkdir(mode=0o700)
+          for profile, name in [('rsa-pss-sha256', 'RSA_KEY'), ('ecdsa-p256-sha256', 'ECDSA_KEY'), ('ed25519', 'ED25519_KEY')]:
+              value = os.environ.get(name, '')
+              if not value:
+                  raise SystemExit('Missing configured CI publisher secret: ' + name)
+              path = root / (profile + '.key.pem')
+              fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+              with os.fdopen(fd, 'w') as stream:
+                  stream.write(value)
+          PY
+      - name: Pull and consume the published tool without source installation
+        env:
+          TOOL_IMAGE: ${{ inputs.image }}
+        run: >-
+          python ci/container_cases.py --image "$TOOL_IMAGE"
+          --keys-dir "$RUNNER_TEMP/anticnspy-secrets"
+          --trust-dir ci/trust --out registry-consumer-results
+      - name: Remove private CI material
+        if: always()
+        run: rm -f "$RUNNER_TEMP/anticnspy-secrets/"*.key.pem
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: registry-consumer-evidence
+          path: registry-consumer-results
+          if-no-files-found: warn
