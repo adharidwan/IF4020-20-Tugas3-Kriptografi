@@ -23,3 +23,18 @@
 
 Local runs are explicitly marked `registry_pull=false`; they do not establish
 public registry distribution or hosted integration evidence.
+
+## Recorded release 1.0.0
+
+The source tag `v1.0.0` points to
+`6061a93765e35a91724ad0def89d16a744be3d75`.
+The [publisher run](https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43689592719)
+published the public Linux/amd64 image on 15 November 2026. The
+[consumer run](https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43690090640)
+passed C01-C05 using the exact digest in [release status](release-status.json).
+The three CI secrets are configured and match the independently provisioned
+public trust stores. [Retained evidence](../test_cases/container-registry/README.md)
+includes the registry pull, signature bundles, verification results, and markers.
+
+Final report identities/photos, the final PDF, and the GitHub Release remain
+separate submission work.

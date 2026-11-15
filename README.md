@@ -191,16 +191,17 @@ used. Raw samples, sizes, environment, median/P95 are in `test_cases/benchmarks`
 
 ## Public image and CI/CD
 
-The intended repository is `ghcr.io/adharidwan/if4020-20-tugas3-kriptografi`.
-Source tag: `v1.0.0`; image version tag: `1.0.0`. **Publication is pending.**
-No public image digest or hosted workflow success is claimed. See
-[release status](docs/release-status.json) and [release steps](docs/releasing.md).
-
-After publication:
+The public image is `ghcr.io/adharidwan/if4020-20-tugas3-kriptografi:1.0.0`.
+Source tag [`v1.0.0`](https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/tree/v1.0.0)
+points to commit `6061a93765e35a91724ad0def89d16a744be3d75`.
+The [publisher](https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43689592719)
+and [registry consumer C01-C05](https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43690090640)
+passed on 15 November 2026. Anonymous registry access was verified.
+See [hosted evidence](test_cases/container-registry/README.md),
+[release status](docs/release-status.json), and [release steps](docs/releasing.md).
 
 ```sh
-docker pull ghcr.io/adharidwan/if4020-20-tugas3-kriptografi:1.0.0
-# IMAGE must contain the actual repository@sha256:digest from the publish job.
+IMAGE=ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426
 docker pull "$IMAGE"
 docker run --rm --network none "$IMAGE" --version
 ```
@@ -209,6 +210,9 @@ The tag-triggered publisher checks version/source consistency and records the
 actual digest. Make the GHCR package public, then dispatch **Registry consumer
 C01-C05** on `main` with that reference. The consumer pulls the published tool
 without building source or installing application/runtime dependencies.
+The saved run has `registry_pull=true` and passed all seven checks: C01 for
+three profiles plus C02-C05. Failed-verification cases left deployment markers
+absent. C05 used no network or TTY and ran as UID/GID `1001:1001`.
 
 Explicit one-time demo provisioning, outside the consumer:
 
@@ -216,8 +220,8 @@ Explicit one-time demo provisioning, outside the consumer:
 python ci/provision_demo.py --keys-dir local-keys/ci-demo
 ```
 
-This workspace already has ignored private demo keys there and matching public
-stores in `ci/trust`. Configure their PEM contents as repository secrets
+This workspace has ignored private demo keys there and matching public
+stores in `ci/trust`. Their PEM contents are configured as repository secrets
 `DEMO_RSA_PRIVATE_KEY`, `DEMO_ECDSA_PRIVATE_KEY`, `DEMO_ED25519_PRIVATE_KEY`.
 Check fingerprints independently. Do not regenerate unless rotating identity.
 
