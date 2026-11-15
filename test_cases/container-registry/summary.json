@@ -1,0 +1,88 @@
+{
+  "image": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426",
+  "package": "anticnspy-demo",
+  "local_image_id": "sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426",
+  "image_platform": "linux/amd64",
+  "repo_digests": [
+    "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426"
+  ],
+  "registry_pull": true,
+  "workflow_run": "43690090640",
+  "cases": [
+    {
+      "id": "C01",
+      "algorithm": "rsa-pss-sha256",
+      "package": "anticnspy-demo",
+      "expected_status": "OK",
+      "actual_status": "OK",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "deployment_marker_exists": true,
+      "passed": true
+    },
+    {
+      "id": "C01",
+      "algorithm": "ecdsa-p256-sha256",
+      "package": "anticnspy-demo",
+      "expected_status": "OK",
+      "actual_status": "OK",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "deployment_marker_exists": true,
+      "passed": true
+    },
+    {
+      "id": "C01",
+      "algorithm": "ed25519",
+      "package": "anticnspy-demo",
+      "expected_status": "OK",
+      "actual_status": "OK",
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "deployment_marker_exists": true,
+      "passed": true
+    },
+    {
+      "id": "C02",
+      "algorithm": "ed25519",
+      "package": "anticnspy-demo",
+      "expected_status": "ARTIFACT_MISMATCH",
+      "actual_status": "ARTIFACT_MISMATCH",
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "deployment_marker_exists": false,
+      "passed": true
+    },
+    {
+      "id": "C03",
+      "algorithm": "ed25519",
+      "package": "anticnspy-demo",
+      "expected_status": "KEY_NOT_TRUSTED",
+      "actual_status": "KEY_NOT_TRUSTED",
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "deployment_marker_exists": false,
+      "passed": true
+    },
+    {
+      "id": "C04",
+      "algorithm": "ed25519",
+      "package": "anticnspy-demo",
+      "expected_status": "INPUT_ERROR",
+      "actual_status": "INPUT_ERROR",
+      "expected_exit_code": 2,
+      "actual_exit_code": 2,
+      "deployment_marker_exists": false,
+      "passed": true
+    },
+    {
+      "id": "C05",
+      "network": "none",
+      "tty": false,
+      "caller_identity": "1001:1001",
+      "persistent_outputs": true,
+      "passed": true
+    }
+  ],
+  "passed": true
+}
