@@ -288,5 +288,5 @@ Base64 is the standard RFC 4648 alphabet with padding.
 
 ## API documentation
 
-<https://adharidwan.github.io/IF4020-20-Tugas3-Kriptografi/api.html>
+<https://adharidwan.github.io/IF4020-20-Tugas3-Kriptografi/docs/api.html>
 (source: [docs/api.md](docs/api.md))
