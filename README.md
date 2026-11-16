@@ -34,10 +34,12 @@ docker pull "$IMAGE"
 docker run --rm --network none "$IMAGE" --version
 ```
 
-The image runs the CLI directly. It needs no network. Mount the input files
-and the output directory:
+The image runs the CLI directly. It needs no network. It is built for
+linux/amd64. Mount the input files and the output directory:
 
 ```sh
+SIGNING_KEY_FILE=$PWD/keys/publisher.key.pem   # absolute path to the private key
+mkdir -p out                                   # must be writable by --user
 docker run --rm --network none --user "$(id -u):$(id -g)" \
   -v "$PWD/dist:/input:ro" -v "$PWD/out:/output" \
   -v "$SIGNING_KEY_FILE:/run/publisher.key.pem:ro" \
@@ -51,13 +53,59 @@ docker run --rm --network none --user "$(id -u):$(id -g)" \
   --trust-store /trust.json --package app --version 1.0.0 --json
 ```
 
-The workflow `.github/workflows/consumer.yml` pulls this image and runs cases
-C01–C05. The private signing keys are GitHub Actions secrets. The public trust
-stores are in `ci/trust/`. Results of the hosted run are in
+### CI workflow
+
+The workflow `.github/workflows/consumer.yml` pulls the image and runs the
+container cases C01-C05 from the assignment spec (sign and verify with all
+three algorithms, changed artifact, untrusted key, missing artifact, offline
+run). It does not build the source.
+
+One-time setup:
+
+1. Make the demo keys. This writes the private keys to `local-keys/ci-demo`
+   and the public trust stores to `ci/trust/`:
+   ```sh
+   python ci/provision_demo.py --keys-dir local-keys/ci-demo
+   ```
+2. Add the three private keys as repository secrets: `DEMO_RSA_PRIVATE_KEY`,
+   `DEMO_ECDSA_PRIVATE_KEY` and `DEMO_ED25519_PRIVATE_KEY`.
+
+Start the workflow by hand on `main` (it has no push trigger):
+
+```sh
+gh workflow run consumer.yml --ref main -f image="$IMAGE"
+```
+
+The main steps of the job:
+
+```yaml
+jobs:
+  consumer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # write the DEMO_*_PRIVATE_KEY secrets to $RUNNER_TEMP/anticnspy-secrets (mode 0600)
+      - run: >-
+          python ci/container_cases.py --image "${{ inputs.image }}"
+          --keys-dir "$RUNNER_TEMP/anticnspy-secrets"
+          --trust-dir ci/trust --out registry-consumer-results
+      - run: rm -f "$RUNNER_TEMP/anticnspy-secrets/"*.key.pem
+        if: always()
+```
+
+To run the same cases on your machine with a local image:
+
+```sh
+docker build --platform linux/amd64 -t anticnspy:local .
+python ci/container_cases.py --image anticnspy:local --allow-local-image \
+  --keys-dir local-keys/ci-demo --trust-dir ci/trust --out test_cases/container-local
+```
+
+Results of the hosted run are in
 [`test_cases/container-registry`](test_cases/container-registry/README.md).
 
 - Publisher run: <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43689592719>
-- Consumer run (C01–C05): <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43690090640>
+- Consumer run (C01-C05): <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43690090640>
 
 ## Run without the container
 
@@ -112,13 +160,13 @@ Verification stops at the first failed check:
 | Order | Check | Status | Exit |
 | ---: | --- | --- | ---: |
 | 1 | Arguments and file read | `INPUT_ERROR` | 2 |
-| 2 | JSON, schema, Base64, canonical manifest | `FORMAT_ERROR` | 1 |
+| 2 | Bundle, manifest and trust store: JSON, schema, Base64, canonical form | `FORMAT_ERROR` | 1 |
 | 3 | Algorithm is supported | `UNSUPPORTED_ALGORITHM` | 1 |
 | 4 | Key is in the store and allowed for the package | `KEY_NOT_TRUSTED` | 1 |
 | 5 | Signature | `INVALID_SIGNATURE` | 1 |
 | 6 | Package, version and file name | `METADATA_MISMATCH` | 1 |
 | 7 | Artifact size and SHA-256 | `ARTIFACT_MISMATCH` | 1 |
-| – | All checks pass | `OK` | 0 |
+| - | All checks pass | `OK` | 0 |
 
 Other commands return exit 2 on error.
 
@@ -153,7 +201,7 @@ anticnspy sbom check --sbom sbom.json --file app.bin
 ```sh
 uv run pytest
 uv run ruff check src tests scripts benchmarks ci
-uv run python scripts/run_evidence.py   # makes test_cases/fixtures (U01–U14)
+uv run python scripts/run_evidence.py   # makes test_cases/fixtures (U01-U14)
 uv run python benchmarks/run.py         # makes test_cases/benchmarks
 ```
 
@@ -162,16 +210,31 @@ purpose. Do not use them for real releases.
 
 ## Algorithms and library API
 
-| Profile | Library API (`cryptography`) | Signature |
-| --- | --- | --- |
-| `rsa-pss-sha256` | `rsa.generate_private_key(public_exponent=65537, key_size=3072)`, `padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=32)`, `hashes.SHA256()` | 384 bytes |
-| `ecdsa-p256-sha256` | `ec.generate_private_key(ec.SECP256R1())`, `ec.ECDSA(hashes.SHA256())`, `utils.decode_dss_signature` / `encode_dss_signature` for raw `r‖s` | 64 bytes |
-| `ed25519` | `Ed25519PrivateKey.generate()`, `.sign()`, `.verify()` | 64 bytes |
+All calls are from `cryptography.hazmat.primitives`.
 
-- Private key: PKCS8 PEM, not encrypted. Public key: SPKI PEM.
-- `keyid`: lowercase hex of SHA-256 over the DER SPKI.
+| Profile | Key generation | Sign | Verify | Signature |
+| --- | --- | --- | --- | --- |
+| `rsa-pss-sha256` | `rsa.generate_private_key(public_exponent=65537, key_size=3072)` | `key.sign(msg, PSS, hashes.SHA256())` | `key.verify(sig, msg, PSS, hashes.SHA256())` | 384 bytes |
+| `ecdsa-p256-sha256` | `ec.generate_private_key(ec.SECP256R1())` | `key.sign(msg, ec.ECDSA(hashes.SHA256()))`, then `utils.decode_dss_signature` to raw r and s | `utils.encode_dss_signature(r, s)`, then `key.verify(der, msg, ec.ECDSA(hashes.SHA256()))` | 64 bytes (r then s, 32 bytes each) |
+| `ed25519` | `ed25519.Ed25519PrivateKey.generate()` | `key.sign(msg)` | `key.verify(sig, msg)` | 64 bytes |
+
+`PSS` is `padding.PSS(mgf=padding.MGF1(hashes.SHA256()), salt_length=32)`.
+`msg` is the manifest bytes. The library does the SHA-256 of the manifest.
+
+Key files and hashes, the same for all profiles:
+
+| Task | API |
+| --- | --- |
+| Write private key (PKCS8 PEM, not encrypted) | `key.private_bytes(Encoding.PEM, PrivateFormat.PKCS8, NoEncryption())` |
+| Write public key (SPKI PEM) | `key.public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo)` |
+| Read keys | `serialization.load_der_private_key`, `serialization.load_der_public_key` |
+| `keyid` | `hashlib.sha256(<DER SPKI>).hexdigest()` |
+| Artifact SHA-256 | `hashlib.sha256()` |
 
 ## File formats
+
+The schema names come from the assignment spec. The files are not compatible
+with the minisign tool.
 
 **Manifest** (`minisign-manifest/v1`). This is the signed message. It is
 compact JSON in this exact field order, UTF-8 without BOM, 16 KiB maximum:
@@ -185,7 +248,7 @@ compact JSON in this exact field order, UTF-8 without BOM, 16 KiB maximum:
 | `package` | `[a-z0-9][a-z0-9._-]{0,63}` |
 | `version` | `[A-Za-z0-9][A-Za-z0-9._+-]{0,63}` |
 | `artifact.name` | File name only, `[A-Za-z0-9][A-Za-z0-9._-]{0,127}` |
-| `artifact.size` | Integer, 0 to 2^53−1 |
+| `artifact.size` | Integer, 0 to 2^53 - 1 |
 | `keyid`, `artifact.sha256` | 64 lowercase hex characters |
 
 The verifier rejects extra fields, missing fields and any byte that is
