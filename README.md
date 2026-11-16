@@ -5,7 +5,12 @@ RSA-PSS, ECDSA P-256 and Ed25519. The signature covers a canonical manifest
 that holds the package, the version and the SHA-256 of the artifact. The
 verifier accepts only keys that a trust store allows for that package.
 
-Version 1.1.0.
+Version 1.1.1.
+
+## Video and report
+
+- Video (explanation and demo): https://www.youtube.com/watch?v=UdnGiYJ6n2s
+- Report (PDF): [docs/report/13523069_13523098_Tugas3_IF4020.pdf](docs/report/13523069_13523098_Tugas3_IF4020.pdf)
 
 For a short, non-technical example, see
 [README (for real human).md](<README (for real human).md>).

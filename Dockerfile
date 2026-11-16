@@ -9,12 +9,12 @@ RUN python -m pip wheel --no-deps --wheel-dir /wheels .
 
 FROM ${PYTHON_IMAGE}
 LABEL org.opencontainers.image.title="AntiCNSpy" \
-      org.opencontainers.image.version="1.1.0" \
+      org.opencontainers.image.version="1.1.1" \
       org.opencontainers.image.description="Strict software release signing and verification" \
       org.opencontainers.image.source="https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi"
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 COPY --from=builder /wheels /wheels
-RUN python -m pip install --no-index --find-links=/wheels anticnspy==1.1.0 \
+RUN python -m pip install --no-index --find-links=/wheels anticnspy==1.1.1 \
     && rm -rf /wheels
 WORKDIR /work
 USER 65532:65532
