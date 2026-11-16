@@ -1,27 +1,27 @@
-ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426: Pulling from adharidwan/if4020-20-tugas3-kriptografi
-34d1c5811eba: Pulling fs layer
-faa890a31e98: Pulling fs layer
-c79bc2df5c83: Pulling fs layer
+ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6: Pulling from adharidwan/if4020-20-tugas3-kriptografi
 37fb86c2a767: Pulling fs layer
-6edc4028975d: Pulling fs layer
-0069ea31add0: Pulling fs layer
 f7a79299dedd: Pulling fs layer
+b6b395c4662e: Pulling fs layer
+1f58eff34688: Pulling fs layer
+0069ea31add0: Pulling fs layer
+faa890a31e98: Pulling fs layer
+480b0b47adbc: Pulling fs layer
 44136fa355b3: Already exists
+432cca85544f: Download complete
+b6b395c4662e: Download complete
 f7a79299dedd: Download complete
-34d1c5811eba: Download complete
 0069ea31add0: Download complete
-c79bc2df5c83: Download complete
-bb4c65e5d9d1: Download complete
-37fb86c2a767: Download complete
-6edc4028975d: Download complete
 faa890a31e98: Download complete
+1f58eff34688: Download complete
+480b0b47adbc: Download complete
+37fb86c2a767: Download complete
 37fb86c2a767: Pull complete
 0069ea31add0: Pull complete
-f7a79299dedd: Pull complete
-c79bc2df5c83: Pull complete
 faa890a31e98: Pull complete
-6edc4028975d: Pull complete
-34d1c5811eba: Pull complete
-Digest: sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426
-Status: Downloaded newer image for ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426
-ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426
+f7a79299dedd: Pull complete
+1f58eff34688: Pull complete
+b6b395c4662e: Pull complete
+480b0b47adbc: Pull complete
+Digest: sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6
+Status: Downloaded newer image for ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6
+ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6

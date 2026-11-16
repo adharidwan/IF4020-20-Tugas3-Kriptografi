@@ -4,7 +4,7 @@
       "--help"
     ],
     "exit_code": 0,
-    "stdout": "usage: anticnspy [-h] [--version] {keygen,sign,verify,trust} ...\n\nAntiCNSpy software release signatures\n\npositional arguments:\n  {keygen,sign,verify,trust}\n    keygen              Generate an exact-profile key pair\n    sign                Sign a canonical release manifest\n    verify              Verify a release using explicit trust\n    trust               Manage package-scoped public-key trust\n\noptions:\n  -h, --help            show this help message and exit\n  --version             show program's version number and exit\n",
+    "stdout": "usage: anticnspy [-h] [--version] {keygen,sign,verify,trust,sbom} ...\n\nAntiCNSpy software release signatures\n\npositional arguments:\n  {keygen,sign,verify,trust,sbom}\n    keygen              Generate an exact-profile key pair\n    sign                Sign a canonical release manifest\n    verify              Verify a release using explicit trust\n    trust               Manage package-scoped public-key trust\n    sbom                Create, sign and check a release SBOM\n\noptions:\n  -h, --help            show this help message and exit\n  --version             show program's version number and exit\n",
     "stderr": ""
   },
   {
@@ -12,7 +12,7 @@
       "--version"
     ],
     "exit_code": 0,
-    "stdout": "AntiCNSpy 1.0.0\n",
+    "stdout": "AntiCNSpy 1.1.0\n",
     "stderr": ""
   },
   {
@@ -24,7 +24,7 @@
       "/scratch/key"
     ],
     "exit_code": 0,
-    "stdout": "{\"algorithm\": \"ed25519\", \"keyid\": \"70f163eefa3c4881be64945981460a8b5ed38a62f893bfc05d7a154556d7a501\", \"private_key\": \"/scratch/key.key.pem\", \"public_key\": \"/scratch/key.pub.pem\"}\n",
+    "stdout": "{\"algorithm\": \"ed25519\", \"keyid\": \"478e8a798d297db66f1c195707c2f9706de4cc27cc287f738030cf02c69d080e\", \"private_key\": \"/scratch/key.key.pem\", \"public_key\": \"/scratch/key.pub.pem\"}\n",
     "stderr": ""
   },
   {
@@ -39,7 +39,7 @@
       "/scratch/trust.json"
     ],
     "exit_code": 0,
-    "stdout": "{\"keyid\": \"70f163eefa3c4881be64945981460a8b5ed38a62f893bfc05d7a154556d7a501\", \"algorithm\": \"ed25519\", \"packages\": [\"scratch\"]}\n",
+    "stdout": "{\"keyid\": \"478e8a798d297db66f1c195707c2f9706de4cc27cc287f738030cf02c69d080e\", \"algorithm\": \"ed25519\", \"packages\": [\"scratch\"]}\n",
     "stderr": ""
   },
   {
@@ -50,7 +50,7 @@
       "/scratch/trust.json"
     ],
     "exit_code": 0,
-    "stdout": "[\n  {\n    \"keyid\": \"70f163eefa3c4881be64945981460a8b5ed38a62f893bfc05d7a154556d7a501\",\n    \"algorithm\": \"ed25519\",\n    \"packages\": [\n      \"scratch\"\n    ]\n  }\n]\n",
+    "stdout": "[\n  {\n    \"keyid\": \"478e8a798d297db66f1c195707c2f9706de4cc27cc287f738030cf02c69d080e\",\n    \"algorithm\": \"ed25519\",\n    \"packages\": [\n      \"scratch\"\n    ]\n  }\n]\n",
     "stderr": ""
   },
   {
@@ -59,7 +59,7 @@
       "remove"
     ],
     "exit_code": 0,
-    "stdout": "Removed 70f163eefa3c4881be64945981460a8b5ed38a62f893bfc05d7a154556d7a501.\n",
+    "stdout": "Removed 478e8a798d297db66f1c195707c2f9706de4cc27cc287f738030cf02c69d080e.\n",
     "stderr": ""
   }
 ]

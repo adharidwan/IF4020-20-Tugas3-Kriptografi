@@ -1,13 +1,13 @@
 {
-  "image": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426",
+  "image": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6",
   "package": "anticnspy-demo",
-  "local_image_id": "sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426",
+  "local_image_id": "sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6",
   "image_platform": "linux/amd64",
   "repo_digests": [
-    "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426"
+    "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6"
   ],
   "registry_pull": true,
-  "workflow_run": "43690090640",
+  "workflow_run": "43831293474",
   "cases": [
     {
       "id": "C01",

@@ -1,7 +1,7 @@
 {
   "image": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi",
-  "version": "1.0.0",
-  "digest": "sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426",
-  "release_tag": "v1.0.0",
-  "reference": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426"
+  "version": "1.1.0",
+  "digest": "sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6",
+  "release_tag": "v1.1.0",
+  "reference": "ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6"
 }

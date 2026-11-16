@@ -1,11 +1,11 @@
 {
-  "source_tag": "v1.0.0",
-  "source_commit": "6061a93765e35a91724ad0def89d16a744be3d75",
-  "publisher_run_url": "https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43689592719",
-  "consumer_run_url": "https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43690090640",
+  "source_tag": "v1.1.0",
+  "source_commit": "e3ed85bfc387fd385380f5e3a6bd7390370b5581",
+  "publisher_run_url": "https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43831076331",
+  "consumer_run_url": "https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43831293474",
   "consumer_conclusion": "success",
-  "completed_at": "2026-11-15T07:28:46Z",
-  "artifact_id": 14151732389,
-  "artifact_digest": "sha256:1300a755fd1a4f21c140c7525b2a5cd820ccbaa83e8118239d6077795167b21b",
+  "completed_at": "2026-11-16T08:27:21Z",
+  "artifact_id": 14208133263,
+  "artifact_digest": "sha256:412ad4fcbebb3bf91bb165e39ccabe49a8bab962b15a2716c0325a27be4170d1",
   "anonymous_manifest_access": true
 }

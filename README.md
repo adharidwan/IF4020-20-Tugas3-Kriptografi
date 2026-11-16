@@ -35,7 +35,7 @@ The OpenSSL CLI is needed only for the interoperability tests.
 ## Run with the container image (CI)
 
 ```sh
-IMAGE=ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:a7d0945841d0e1bb3d7052e0cf402a59eda18f1d7afad4f544ec55a5265d9426
+IMAGE=ghcr.io/adharidwan/if4020-20-tugas3-kriptografi@sha256:1207bc792dd866767a20e487f5309b82b2e007f14f8cd08f09f986018cde77b6
 docker pull "$IMAGE"
 docker run --rm --network none "$IMAGE" --version
 ```
@@ -110,8 +110,8 @@ python ci/container_cases.py --image anticnspy:local --allow-local-image \
 Results of the hosted run are in
 [`test_cases/container-registry`](test_cases/container-registry/README.md).
 
-- Publisher run: <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43689592719>
-- Consumer run (C01-C05): <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43690090640>
+- Publisher run: <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43831076331>
+- Consumer run (C01-C05): <https://github.com/adharidwan/IF4020-20-Tugas3-Kriptografi/actions/runs/43831293474>
 
 ## Run without the container
 
