@@ -1,0 +1,13 @@
+{
+  "schema": "minisign-trust/v1",
+  "keys": [
+    {
+      "keyid": "740ceb0f86f8f8d07cb30c65ec98e59033f8b6a7258f1591478737abfb7989df",
+      "algorithm": "ed25519",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAEBKWvUAuEfhTdR4LD/P0MzQvOvo54O/R4M3jA39YDWw=\n-----END PUBLIC KEY-----\n",
+      "packages": [
+        "alice-photos"
+      ]
+    }
+  ]
+}

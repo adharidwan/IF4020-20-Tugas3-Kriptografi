@@ -7,6 +7,9 @@ verifier accepts only keys that a trust store allows for that package.
 
 Version 1.0.0.
 
+For a short, non-technical example, see
+[README (for real human).md](<README (for real human).md>).
+
 ## Tech stack
 
 - Python 3.13 (3.11 or later works)
