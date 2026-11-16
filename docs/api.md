@@ -84,6 +84,43 @@ This function does not raise on a failed check. It returns a result.
 
 `to_dict()` returns the same fields as the `verify --json` output.
 
+## Signed SBOM
+
+Module `anticnspy.sbom`. The SBOM is a CycloneDX 1.6 JSON file.
+
+### `create(file, package, version, out, *, dependencies=None, force=False) -> dict`
+
+Writes an SBOM for the artifact `file` and returns it.
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `file` | `str \| Path` | Release artifact |
+| `package`, `version` | `str` | Release metadata, same rules as `sign_file` |
+| `out` | `str \| Path` | SBOM output path |
+| `dependencies` | `list[str] \| None` | Items in the form `NAME==VERSION` |
+| `force` | `bool` | Overwrite an existing SBOM |
+
+### `sign(sbom, package, version, key, out, *, force=False) -> dict`
+
+Signs the SBOM file and writes a `minisign-bundle/v1` bundle. Raises
+`InputError` if the SBOM describes a different package or version. Returns the
+signed manifest.
+
+### `verify(sbom, bundle, trust_store, package, version) -> VerificationResult`
+
+Verifies the SBOM signature with the trust store. Then it checks that the SBOM
+describes `package` and `version`. A changed SBOM gives `ARTIFACT_MISMATCH`.
+
+### `check(sbom, file) -> VerificationResult`
+
+Checks that `file` has the name, size and SHA-256 in the SBOM. A replaced
+artifact gives `ARTIFACT_MISMATCH`. `algorithm` and `keyid` are `None`.
+
+### `parse(raw: bytes) -> dict`
+
+Returns `{"package", "version", "name", "size", "sha256"}` from the SBOM.
+Raises `FormatError` if the SBOM is not valid.
+
 ## Manifest helpers
 
 | Function | Description |

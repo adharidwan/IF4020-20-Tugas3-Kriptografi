@@ -122,6 +122,32 @@ Verification stops at the first failed check:
 
 Other commands return exit 2 on error.
 
+## Signed SBOM
+
+The SBOM is a CycloneDX 1.6 JSON file. It records the package, the version,
+the file name, the size and the SHA-256 of the release artifact. The SBOM is
+signed as a separate bundle in the same `minisign-bundle/v1` format, with the
+same keys and trust store as the release.
+
+| Command | What it does | Fails with |
+| --- | --- | --- |
+| `sbom create --file F --package P --version V --out sbom.json [--dependency NAME==VER ...]` | Writes the SBOM for artifact `F` | exit 2 |
+| `sbom sign --sbom sbom.json --package P --version V --key K --out sbom.bundle.json` | Signs the SBOM | exit 2 |
+| `sbom verify --sbom sbom.json --bundle sbom.bundle.json --trust-store T --package P --version V [--json]` | Checks the SBOM signature, signer trust and release metadata | `KEY_NOT_TRUSTED`, `INVALID_SIGNATURE`, `METADATA_MISMATCH`, `ARTIFACT_MISMATCH` (SBOM changed) |
+| `sbom check --sbom sbom.json --file F [--json]` | Checks that `F` has the name, size and SHA-256 in the SBOM | `METADATA_MISMATCH`, `ARTIFACT_MISMATCH` (artifact replaced) |
+
+```sh
+anticnspy sbom create --file app.bin --package app --version 1.0.0 \
+  --dependency cryptography==50.0.2 --out sbom.json
+anticnspy sbom sign --sbom sbom.json --package app --version 1.0.0 \
+  --key keys/publisher.key.pem --out sbom.bundle.json
+anticnspy sbom verify --sbom sbom.json --bundle sbom.bundle.json \
+  --trust-store trust.json --package app --version 1.0.0
+anticnspy sbom check --sbom sbom.json --file app.bin
+```
+
+`sbom verify` and `sbom check` use the same statuses and exit codes as `verify`.
+
 ## Run the tests
 
 ```sh
@@ -193,4 +219,5 @@ Base64 is the standard RFC 4648 alphabet with padding.
 
 ## API documentation
 
-See [docs/api.md](docs/api.md).
+<https://adharidwan.github.io/IF4020-20-Tugas3-Kriptografi/api.html>
+(source: [docs/api.md](docs/api.md))
