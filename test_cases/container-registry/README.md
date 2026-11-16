@@ -20,7 +20,7 @@ Source: tag `v1.0.0`, commit `6061a93765e35a91724ad0def89d16a744be3d75`.
 | C02 | Changed artifact (same size) | ARTIFACT_MISMATCH | 1 | absent |
 | C03 | Empty trust store | KEY_NOT_TRUSTED | 1 | absent |
 | C04 | Missing artifact | INPUT_ERROR | 2 | absent |
-| C05 | Offline, no TTY, UID/GID 1001 | all commands passed | 0 | – |
+| C05 | Offline, no TTY, UID/GID 1001 (see `summary.json`) | all commands passed | 0 | - |
 
 All runs used `--network none`. Files: `summary.json` (all cases), `pull.log`,
 one folder per case, `C05.log.json`, `release-image.json` and `workflow.json`.

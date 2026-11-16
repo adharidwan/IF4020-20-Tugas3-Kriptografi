@@ -5,7 +5,7 @@ RSA-PSS, ECDSA P-256 and Ed25519. The signature covers a canonical manifest
 that holds the package, the version and the SHA-256 of the artifact. The
 verifier accepts only keys that a trust store allows for that package.
 
-Version 1.0.0.
+Version 1.1.0.
 
 For a short, non-technical example, see
 [README (for real human).md](<README (for real human).md>).
@@ -23,8 +23,11 @@ For a short, non-technical example, see
 | Package | Version | Use |
 | --- | --- | --- |
 | `cryptography` | 50.0.2 | Runtime |
-| `cffi`, `pycparser` | 2.1.1, 3.12 | Runtime (needed by `cryptography`) |
-| `pytest`, `ruff`, `PyYAML` | 9.2.0, 0.17.5, 6.0.3 | Development |
+| `cffi` | 2.1.1 | Runtime (needed by `cryptography`) |
+| `pycparser` | 3.12 | Runtime (needed by `cffi`) |
+| `pytest` | 9.2.0 | Development |
+| `ruff` | 0.17.5 | Development |
+| `PyYAML` | 6.0.3 | Development |
 
 `requirements.txt` and `requirements-dev.txt` pin all versions with hashes.
 The OpenSSL CLI is needed only for the interoperability tests.
