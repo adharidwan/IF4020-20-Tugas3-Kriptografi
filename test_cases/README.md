@@ -1,25 +1,18 @@
-# Reproducible evidence
+# Test cases
 
-- `fixtures/`: 29 U01-U14 scenarios: inputs, bundles, trust, manifest bytes,
-  expected/actual results, commands, stdout/stderr. U14 retains `second.json`.
-- `keys/`: deliberately PUBLIC test private/public keys. Never use for real
-  releases or CI secrets. These differ from the private CI demo publisher.
-- `results/scenarios.json`: all outcomes and repeated-signature comparisons.
-- `results/pytest.xml`: actual JUnit results, including bidirectional OpenSSL
-  interoperability for all three profiles.
-- `benchmarks/`: raw measurements, summaries, sizes and environment.
-- `container-local/`: actual Linux/amd64 C01-C05 local-image regression results,
-  marked `registry_pull=false`; these are not hosted registry evidence.
+| Folder | Content |
+| --- | --- |
+| `fixtures/` | 29 scenarios for U01–U14: inputs, bundles, commands, expected and actual results |
+| `keys/` | Test keys. They are public on purpose. Do not use them for real releases |
+| `results/` | `scenarios.json` (all outcomes) and `pytest.xml` (JUnit, includes OpenSSL interop) |
+| `benchmarks/` | Raw timings, median and P95, environment |
+| `container-local/` | C01–C05 with a locally built image |
+| `container-registry/` | C01–C05 from the hosted GitHub Actions run with the GHCR image |
 
-Reproduce from repository root after installing development dependencies:
+Run again from the repository root:
 
 ```sh
-python -m pytest --junitxml=test_cases/results/pytest.xml
-python scripts/run_evidence.py
-python benchmarks/run.py
-python ci/container_cases.py --image anticnspy:local --allow-local-image \
-  --keys-dir local-keys/ci-demo --trust-dir ci/trust --out <new-clean-directory>
+uv run pytest --junitxml=test_cases/results/pytest.xml
+uv run python scripts/run_evidence.py
+uv run python benchmarks/run.py
 ```
-
-The generator replaces test keys/fixtures. Use `--out` for a separate snapshot.
-Recorded scenario commands assume the repository root as working directory.

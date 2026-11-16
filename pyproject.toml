@@ -12,7 +12,6 @@ dependencies = ["cryptography>=46,<51"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8,<10", "ruff>=0.12,<1", "PyYAML>=6,<7"]
-report = ["reportlab>=4,<5", "pypdfium2>=5,<6"]
 
 [project.scripts]
 anticnspy = "anticnspy.cli:main"

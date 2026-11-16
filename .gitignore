@@ -1,19 +1,16 @@
+# Python
 .venv/
-.tools/
-.cache/
 __pycache__/
 *.py[cod]
 *.egg-info/
 .pytest_cache/
 .ruff_cache/
-build/
-dist/
-tmp/
 .coverage
 htmlcov/
+build/
+dist/
+
+# Private keys (test keys in test_cases/keys are public on purpose)
 local-keys/
 *.key.pem
 !test_cases/keys/*.key.pem
-/PLAN.md
-/Tugas3-nOinject.pdf
-/output/
